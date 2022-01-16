@@ -30,6 +30,13 @@ functions:
           path: todos
           method: get
           cors: true
+  getTodo:
+    handler: endpoints/getTodo.handler
+    events:
+      - http:
+          path: todos/{id}
+          method: get
+          cors: true
 resources:
   Resources:
     TodoTable:
