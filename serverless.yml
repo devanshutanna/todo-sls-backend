@@ -10,6 +10,11 @@ provider:
   region: us-east-1
   environment:
     tableName: ${self:custom.tableName}
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:*
+      Resource: '*'
 
 custom:
   tableName: todo
@@ -17,6 +22,14 @@ custom:
 plugins:
   - serverless-plugin-typescript
 
+functions:
+  getTodos:
+    handler: endpoints/getTodos.handler
+    events:
+      - http:
+          path: todos
+          method: get
+          cors: true
 resources:
   Resources:
     TodoTable:
