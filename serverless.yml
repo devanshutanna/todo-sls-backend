@@ -44,6 +44,14 @@ functions:
           path: todos
           method: put
           cors: true
+  removeTodo:
+    handler: endpoints/removeTodo.handler
+    events:
+      - http:
+          path: todos/{id}
+          method: delete
+          cors: true          
+
 resources:
   Resources:
     TodoTable:
